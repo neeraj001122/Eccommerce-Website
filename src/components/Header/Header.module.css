@@ -1,0 +1,19 @@
+.up {
+  text-align: center;
+  font-size: 2rem;
+  background-color: black;
+  color: white;
+  position: relative; top: -2rem;
+}
+
+.down {
+    text-align: center;
+    border-bottom: 2px;
+    font-size: 5rem;
+    background-color: grey;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+    color: white;
+    font-style: italic;
+    position: relative; top: -90px;
+}
