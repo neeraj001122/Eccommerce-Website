@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Item.module.css'
-import Button from "../UI/Button";
+import { useContext } from "react";
+import Cartctx from "../../Store/creat-context";
 
 
 const ItemList = () => {
@@ -12,6 +13,8 @@ const ItemList = () => {
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+      
+      quantity:1
     },
 
     {
@@ -21,6 +24,8 @@ const ItemList = () => {
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+
+        quantity:1  
     },
 
     {
@@ -30,6 +35,8 @@ const ItemList = () => {
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+
+        quantity:1  
     },
 
     {
@@ -39,23 +46,29 @@ const ItemList = () => {
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+
+        quantity:1  
     },
   ];
+  const ctx = useContext(Cartctx)
+  const addItemHandler = (item) => {
+    ctx.addItem(item)
+  };
 
   let Items = productsArr.map((item) => {
     return (
-        <section>
-      <div key={item.title}>
+        <div key={item.title} className={classes.box}>
+      <div>
         <div className={classes.album}>{item.title}</div>{" "}
         <div className={classes.picture}>
           <img src={item.imageUrl} alt={item.title} />
         </div>{" "}
         <div className={classes.price}>{item.price}</div>
-        <div className={classes.button}>
-        <Button>Add to Cart</Button>
+        <div className={classes.button_List}>
+        <button onClick={addItemHandler.bind(this, item)}>Add to Cart</button>
         </div>
       </div>
-      </section>
+      </div>
     );
   });
 
