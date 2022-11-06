@@ -1,0 +1,22 @@
+.div{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.h2{
+    font-family: fantasy;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    border: 5px salmon;
+}
+
+.img{
+    float: left;
+    margin: 20px 50px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+

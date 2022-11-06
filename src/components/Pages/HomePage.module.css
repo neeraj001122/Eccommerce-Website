@@ -1,0 +1,83 @@
+.section{
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-image: url("https://cdn131.picsart.com/302730314192201.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.h1{
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    font-size: 50px;
+    position: relative; top: -16rem;
+}
+
+.tour{
+    display: flex;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    position: relative; top: -10rem;
+}
+
+.date{
+    width: 12%;
+}
+
+.city{
+    width: 25%;
+    color:#777;
+}
+
+.stage{
+    width: 53%;
+     color:#777;
+}
+
+.button{
+    width: 20%;
+    background: #56CCF2;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.mid_button{
+    display: block;
+    border: 1px solid #56CCF2;
+    padding: 15px 30px;
+    font-size: 23px;
+    font-weight: 200;
+    margin: 10px auto;
+    background: inherit;
+    cursor: pointer;
+    color: white;
+    position: relative; top: -70px;
+    cursor: pointer;
+}
+
+.yo{
+    background-color: #777;
+    padding: 50px;
+    position: relative; top: -70px;
+}
+
+.icon{
+    cursor: pointer;
+    display: block;
+    border: 2px solid #56CCF2;
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 200;
+    margin: 20px auto;
+    background: inherit;
+    color: #56CCF2;
+    position: relative; top: -12rem;
+}
