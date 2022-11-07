@@ -1,44 +1,27 @@
-import React, {useState}  from 'react';
-import Header from './components/Header/Header';
-import ItemList from './components/List/ItemList';
-import Cart from './components/Cart/Cart';
-import CartContextProvider from './Store/CartContextProvider';
-import { Switch } from 'react-router-dom';
-import { Route } from "react-router-dom";
-import AboutPage from './components/Pages/AboutPage';
-import HomePage from './components/Pages/HomePage';
+import React, { useState } from "react";
 
+import MoviesList from "./components/MoviesList";
+import "./App.css";
 
 function App() {
-  const [showCart, setShowCart] = useState(false)
+  const [movies, setMovies] = useState([]);
+  async function fetchMovieHandler  () {
+      const res = await fetch("https://swapi.dev/api/films/")
+      const data = await res.json();
+       setMovies(data.results);
+      }
 
-  const showCartHandler = () => {
-     setShowCart(true)
-  };
-
-  const removeCartHandler = () => {
-    setShowCart(false)
-  };
 
   return (
-    <div>
-    <CartContextProvider>
-    <Switch>
-    <Route path="/about">
-      <AboutPage />
-    </Route>
-    <Route path="/home">
-      <HomePage />
-    </Route>
-    <Route path="">
-      {showCart && <Cart onClose={removeCartHandler}></Cart>}
-      <Header onOpen={showCartHandler}></Header>
-      <ItemList></ItemList>
-      </Route>
-      </Switch>
-    </CartContextProvider>
-    </div>
+    <React.Fragment>
+      <section>
+        <button onClick={fetchMovieHandler}>Fetch Movies</button>
+      </section>
+      <section>
+        <MoviesList movies={movies} />
+      </section>
+    </React.Fragment>
   );
-}
+};
 
 export default App;
