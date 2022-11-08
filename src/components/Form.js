@@ -1,19 +1,28 @@
 import React, {useRef} from "react";
 
-const Form = () => {
+const Form = (props) => { 
   const Titalref=useRef('');
   const Openingref=useRef('');
   const Realiseref=useRef('');
   
  const submitHandler = (event) => {
-   event.preventDefault();
+  event.preventDefault();
+   if(Titalref.current.value === '' || Openingref.current.value === '' || Realiseref.current.value === '')
+   {
+    alert('Please fill all the field')
+    return
+   }
   const myObj = {
     tital:Titalref.current.value,
     Opening:Openingref.current.value,
     realiseDate:Realiseref.current.value
   }
-  console.log(myObj)
+  props.transfer(myObj)
+  Titalref.current.value='';
+  Openingref.current.value='';
+  Realiseref.current.value='';
  };
+
 
   return <form onSubmit={submitHandler}>
     <div>

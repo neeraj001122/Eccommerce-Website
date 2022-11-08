@@ -7,11 +7,13 @@ const MovieList = (props) => {
   return (
     <ul className={classes['movies-list']}>
       {props.movies.map((movie) => (
-        <Movie
-          key={movie.title}
+        <Movie 
+          id={movie.id}
+          key={movie.id}
           title={movie.title}
-          releaseDate={movie.release_Date}
-          openingText={movie.opening_crawl}
+          releaseDate={movie.releaseDate}
+          openingText={movie.openingText}
+          onDelete={(id) => props.onDelete(id)}
         />
       ))}
     </ul>
