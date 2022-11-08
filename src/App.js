@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
@@ -9,25 +9,35 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null)
-  async function fetchMovieHandler  () {
-      setLoading(true)
-      setError(null)
-      try {
-        const res = await fetch("https://swapi.dev/api/film")
-        if(!res.ok)
-        {
-          throw new Error('Something went wrong... retrying')
-        }
-      const data = await res.json();
-       setMovies(data.results);
-      } catch (errror) {
-      setLoading(false)
-      const id = setInterval(() => {
-        fetchMovieHandler();
-      }, 5000)
-      arr.push(id)
+
+  let fetchMovieHandler = useCallback(async function fetchMovieHandler  () {
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch("https://swapi.dev/api/films")
+      if(!res.ok)
+      {
+        throw new Error('Something went wrong... retrying')
+      }
+    const data = await res.json();
+    console.log(data)
+     setMovies(data.results);
+     setLoading(false)
+    } catch (errror) {
+      setError(errror)
+    setLoading(false)
+    const id = setInterval(() => {
+      fetchMovieHandler();
+      console.log('interval')
+    }, 5000)
+    arr.push(id)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    fetchMovieHandler();
+  }, [fetchMovieHandler])
+  
   const stopHandler = () => {
     for(let id of arr)
     {
@@ -35,17 +45,15 @@ function App() {
       clearInterval(id)
     }
   }; 
-  console.log(arr)
   return (
     <React.Fragment>
       <section>
         <button onClick={fetchMovieHandler}>Fetch Movies</button>
       </section>
       <section>
-      <button onClick={stopHandler}>Stop Retrying</button>
        {!loading && <MoviesList movies={movies} />}
-       {!loading && error && <p>{error}</p>}
        {loading && <Loading />}
+       {!loading && error && <p>{error.message}{' '}{<button onClick={stopHandler}>Stop Retrying</button>}</p> }
       </section>
     </React.Fragment>
   );
