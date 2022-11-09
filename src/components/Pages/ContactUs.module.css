@@ -1,0 +1,39 @@
+.form{  
+    padding: 20px;
+    background-color: aqua; 
+    text-align: center;
+    width: 1200px;
+    border-radius: 25px;
+    position: relative; left: 5rem;
+}
+
+.field{
+    
+}
+
+.field label{
+   font-size: 2rem;
+   display: flex;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 700;
+   padding-bottom: 1rem;
+}
+
+.field input{
+    display: flex;
+    width: 1150px;
+    border-radius: 10px;
+    height: 3rem;
+    font-size: xx-large;    
+}
+
+.button{
+    width: 15rem;
+    height: 3rem;
+    border-radius: 10px;
+    border-color: aquamarine;
+    cursor: pointer;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(152, 230, 152);
+}

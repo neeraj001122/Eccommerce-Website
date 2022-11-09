@@ -58,10 +58,10 @@ const ItemList = () => {
   let Items = productsArr.map((item) => {
     return (
         <div key={item.title} className={classes.box}>
-      <div>
+      <div className={classes.div}>
         <div className={classes.album}>{item.title}</div>{" "}
         <div className={classes.picture}>
-          <img src={item.imageUrl} alt={item.title} />
+          <img className={classes.img} src={item.imageUrl} alt={item.title} />
         </div>{" "}
         <div className={classes.price}>{item.price}</div>
         <div className={classes.button_List}>

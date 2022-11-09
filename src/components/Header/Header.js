@@ -27,6 +27,9 @@ const Header = (props) => {
       <li>
         <NavLink  to='/home'>Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/contactus">Contact Us</NavLink>
+      </li>
       <button className={classes.button} onClick={cartshow}>
         Cart {tottal}
       </button>
