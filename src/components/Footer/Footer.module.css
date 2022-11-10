@@ -1,0 +1,30 @@
+.footer{
+    background-color: aqua;
+    height: 8rem;
+}
+
+.footer span{
+    font-size: 4rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative; top: 1rem; left: 15rem;
+    color: white;
+}
+
+.div{
+  padding-top: 30px;
+}
+
+.ul{
+    list-style-type: none;
+    display: flex;
+    float: right;
+}
+
+.ul li{
+    padding: 10px;
+    margin: 0px 20px;
+}
+
+.ul img{
+    width: 30px;
+}

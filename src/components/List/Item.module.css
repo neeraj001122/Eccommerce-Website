@@ -1,38 +1,46 @@
 .box{
-    position: relative; top: -10rem;
+    position: relative; top: -2rem; left: 2rem;
+    display: inline-flex;
     box-sizing: border-box;
-    width: 100%;
+    width: 650px;
     height: 400px;
     background-color: rgb(206, 248, 248)  ;
     display: inline-table;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: black;
 }
 
 .music {
-    text-align: center;
+    width: 200px;
     font-size: 2rem;
     font-style: oblique;
-    position: relative; top: -5rem;
+    position: relative; top: -2rem; left: 40rem;
 }
 
 .album {
     display: block;
     width: 100%;
-    text-align: center;
     font-size: 24px;
     color: rgb(51, 51, 51);
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .picture {
     /* position: relative; left: 32rem; */
-    text-align: center;
-    object-fit: cover;
+    /* text-align: center; */
+    /* object-fit: cover;
     height: 100%;
-    width: 100%;
+    width: 250px;
     filter: brightness(100%);
     padding: 0px;
     margin: 0px;
-    transition: all 0.5s ease-in 0s;
+    transition: all 0.5s ease-in 0s; */
+    max-width: 20px;
+    position: relative; left: 9rem;
 }   
 
 .price {
@@ -51,3 +59,15 @@
     padding: 2px;
     cursor: pointer;
 }
+
+.button{
+    color: white;
+    background-color: aqua;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative; top: -2rem;
+    float: right;
+    width: 6rem;
+    height: 3rem;
+  }

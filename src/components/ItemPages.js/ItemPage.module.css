@@ -1,0 +1,25 @@
+.title{
+    text-align: center;
+    font-style: oblique ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.img{
+    width: 20rem;
+    border-radius: 10px;
+    padding-left: 5px ;
+}
+
+.button{
+    width: 160px;
+    height: 2rem;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.price {
+    font-size: larger;
+}

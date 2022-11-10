@@ -8,9 +8,63 @@ import { Route } from "react-router-dom";
 import AboutPage from './components/Pages/AboutPage';
 import HomePage from './components/Pages/HomePage';
 import ContactUs from './components/Pages/ContactUs';
+import ItemPage from './components/ItemPages.js/ItemPage';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
+
+  const productsArr = [
+    {
+      key:'1',
+      title: "Album 1",
+
+      price: 100,
+
+      imageUrl:
+        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+      
+      quantity:1
+    },
+
+    {
+      key:'2',
+      title: "Album 2",
+
+      price: 50,
+
+      imageUrl:
+        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+
+        quantity:1  
+    },
+
+    {
+      key:'3',
+      title: "Album 3",
+
+      price: 70,
+
+      imageUrl:
+        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+
+        quantity:1  
+    },
+
+    {
+      key:'4',
+      title: "Album 4",
+
+      price: 100,
+
+      imageUrl:
+        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+
+        quantity:1  
+    },
+  ];
+
+
   const [showCart, setShowCart] = useState(false)
 
   const showCartHandler = () => {
@@ -32,14 +86,18 @@ function App() {
       <HomePage />
     </Route>
     <Route path='/contactus'>
-        <ContactUs></ContactUs>
+        <ContactUs />
       </Route>
-    <Route path="">
+      <Route path="/:productId">
+        <ItemPage itemList={productsArr} />
+      </Route>
+    <Route path="" >
       {showCart && <Cart onClose={removeCartHandler}></Cart>}
-      <Header onOpen={showCartHandler}></Header>
-      <ItemList></ItemList>
+      <Header  />
+      <ItemList itemList={productsArr} onOpen={showCartHandler} /> 
       </Route>
       </Switch>
+      <Footer />
     </CartContextProvider>
     </div>
   );
