@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useContext } from 'react';
 import Layout from './components/Layout/Layout';
 import UserProfile from './components/Profile/UserProfile';
@@ -11,16 +11,17 @@ function App() {
   return (
     <Layout>
       <Switch>
-        {!loggedIn &&
         <Route path='/' exact>
           <HomePage />
         </Route>
-         }
-        <Route path='/auth'>
+        {!loggedIn && <Route path='/auth'>
           <AuthPage />
-        </Route>
-        <Route path='/profile'>
+        </Route>}
+        {loggedIn && <Route path='/profile'>
           <UserProfile />
+        </Route>}
+        <Route to='*'>
+          <Redirect to='/' />
         </Route>
       </Switch>
     </Layout>

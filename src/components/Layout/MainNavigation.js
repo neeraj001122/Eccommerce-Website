@@ -11,6 +11,7 @@ const MainNavigation = () => {
     autctx.isLoggedIn()
     history.replace('/auth')
     autctx.token = null;
+    localStorage.removeItem('token')
   };
   return (
     <header className={classes.header}>

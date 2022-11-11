@@ -9,14 +9,17 @@ const AuthContexte = React.createContext({
 
 
  export const AuthContextProvider = (props) => {
-    const [haveToken, setHaveToken] = useState(null)
+   const initialValue = localStorage.getItem('token')
+    const [haveToken, setHaveToken] = useState(initialValue)
     const userIsLoggedIn= !!haveToken;
      const removeItemHandler = () => {
         setHaveToken(null)
+        localStorage.removeItem('token')
      };
 
      const addItemHandler = (token) => {
         setHaveToken(token)   
+        localStorage.setItem('token', token)
      };
 
     const Authctx = {

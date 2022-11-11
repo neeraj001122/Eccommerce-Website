@@ -61,7 +61,8 @@ const AuthForm = () => {
         alert(data.error.errors[0].message);
       } else {
         autCtx.signIn(data.idToken)
-        history.replace('/profile')
+        localStorage.setItem('token',data.idToken)
+        history.replace('/profile') 
         }
     }
     setShowButton(true);
