@@ -10,6 +10,7 @@ const MainNavigation = () => {
   const logoutHandler = () => {
     autctx.isLoggedIn()
     history.replace('/auth')
+    autctx.token = null;
   };
   return (
     <header className={classes.header}>
