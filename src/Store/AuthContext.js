@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 const AuthContexte = React.createContext({
-    tokens:'',
+    token:'',
     logged:false,
     isLoggedIn: () => {},
     signIn: (token) => {}
@@ -16,8 +16,7 @@ const AuthContexte = React.createContext({
      };
 
      const addItemHandler = (token) => {
-        setHaveToken(token) 
-        console.log(token)
+        setHaveToken(token)   
      };
 
     const Authctx = {
