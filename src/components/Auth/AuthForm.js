@@ -1,28 +1,30 @@
-import { useState, useRef } from "react";
-
+import { useState, useRef, useContext } from "react";
 import classes from "./AuthForm.module.css";
+import AuthContext from '../../Store/AuthContext'
 
 const AuthForm = () => {
+
+  const autCtx = useContext(AuthContext)
   const [isLogin, setIsLogin] = useState(true);
-  const [showButton, setShowButton] = useState(true)
+  const [showButton, setShowButton] = useState(true);
   const email = useRef();
   const password = useRef();
 
   const submitHandler = async (event) => {
-    event.preventDefault()
-    setShowButton(false)
+    event.preventDefault();
+    setShowButton(false);
 
     const enteredEmail = email.current.value;
     const enteredPassword = password.current.value;
-    console.log(enteredEmail,enteredPassword)
+    console.log(enteredEmail, enteredPassword);
 
     if (!isLogin) {
       const res = await fetch(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAkm4Ptg2WTV8XWJwYVDpyZyGkADiAAsG8",
         {
-            method: "POST",
-            body: JSON.stringify({
-            email: enteredEmail,  
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
             password: enteredPassword,
             returnSecureToken: true,
           }),
@@ -32,20 +34,41 @@ const AuthForm = () => {
         }
       );
       const data = await res.json();
-      if(!res.ok)
-      {
-      alert(data.error.errors[0].message)
+      if (!res.ok) {
+        alert(data.error.errors[0].message);
+      }
+      else{
+       autCtx.signIn(data.idToken)
       }
     } else {
-       
+      const res = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAkm4Ptg2WTV8XWJwYVDpyZyGkADiAAsG8",{
+          method:'POST',
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error.errors[0].message);
+      } else {
+        autCtx.signIn(data.idToken)
+      }
     }
-    setShowButton(true)
+    setShowButton(true);
   };
-
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+  
+
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
@@ -59,7 +82,9 @@ const AuthForm = () => {
           <input type="password" id="password" required ref={password} />
         </div>
         <div className={classes.actions}>
-          {showButton && <button>{isLogin ? "Login" : "Create Account"}</button>}
+          {showButton && (
+            <button>{isLogin ? "Login" : "Create Account"}</button>
+          )}
           {!showButton && <p>Sending Request</p>}
           <button
             type="button"
