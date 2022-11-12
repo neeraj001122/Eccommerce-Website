@@ -23,20 +23,20 @@ const ItemList = (props) => {
 
   let Items = props.itemList.map((item) => {
     return (
-      <Link to={'/'+item.key} key={item.title}>
-        <div className={classes.box}>
+        <div key={item.title} className={classes.box}>
       <div className={classes.div}>
         <div className={classes.album}>{item.title}</div>{" "}
+        <Link to={'/'+item.key}>
         <div className={classes.picture}>
           <img className={classes.img} src={item.imageUrl} alt={item.title} />
         </div>{" "}
+        </Link>
         <div className={classes.price}>{'$'+item.price}</div>
         <div className={classes.button_List}>
         <button onClick={addItemHandler.bind(this, item)}>Add to Cart</button>
         </div>
       </div>
       </div>
-      </Link>
     );
   });
 

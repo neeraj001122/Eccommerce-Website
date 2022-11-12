@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import classes from './AboutPage.module.css'
+import Footer from "../Footer/Footer";
 
 const AboutPage = () => {
   return (
@@ -46,6 +47,7 @@ const AboutPage = () => {
           the needs of the agony of the choice. We hate the fellow.
           </p>
       </div>
+      <Footer />
     </div>
   );
 };

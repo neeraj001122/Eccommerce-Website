@@ -1,11 +1,25 @@
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
 import Header from "../Header/Header";
 import ProductReview from "./ProductReview";
 import classes from "./ItemPage.module.css";
+import Cartctx from "../../Store/creat-context";
 
 const ItemPage = (props) => {
   const param = useParams();
-  console.log(param.productId);
+  const cartctx = useContext(Cartctx);
+  const cartshow = () => {
+    props.onOpen();
+  };
+  let tottal = 0;
+  cartctx.items.forEach((element) => {
+    tottal = tottal + element.quantity;
+  });
+
+  const ctx = useContext(Cartctx)
+  const addItemHandler = (item) => {
+    ctx.addItem(item)
+  };
   const output = props.itemList.map((element) => {
     if (element.key === param.productId) {
       return (
@@ -52,7 +66,7 @@ const ItemPage = (props) => {
           </span>
           <div className={classes.price}>{"$" + element.price}</div>
           <div>
-            <button className={classes.button}>Add to cart</button>
+          <button className={classes.button} onClick={addItemHandler.bind(this, element)}>Add to Cart</button>
             <button className={classes.button}>Buy</button>
           </div>
         </div>
@@ -62,6 +76,9 @@ const ItemPage = (props) => {
   return (
     <div>
       <Header />
+      <button className={classes.button} onClick={cartshow}>
+        Cart {tottal}
+      </button>
       {output}
       <div>
         <ProductReview />

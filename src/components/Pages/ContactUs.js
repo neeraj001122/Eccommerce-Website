@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer';
 import classes from './ContactUs.module.css'
 
 
@@ -51,6 +52,7 @@ const ContactUs = () => {
             <button className={classes.button}>Submit</button>
         </form>
     </div>
+    <Footer />
     </div>
    )
 };

@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import classes from './HomePage.module.css'
+import Footer from "../Footer/Footer";
 
 
 const HomePage = () => {
@@ -66,6 +67,7 @@ const HomePage = () => {
       <button className={classes.button}>BUY TICKETS</button>
    </div>
    </section>
+   <Footer />
    </div>
 };
 

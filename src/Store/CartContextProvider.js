@@ -2,6 +2,8 @@ import { useState } from "react";
 import Cartctx from "./creat-context";
 const CartContextProvider = (props) => {
   const [items, setItems] = useState([])
+  const [haveToken, setHaveToken] =  useState(null)
+  const [loggedIn, setLoggedIn] = useState(false)
 const addItemHandler = (item) => {
    let newArray = [...items];
    let arrayHasItem = false
@@ -26,11 +28,20 @@ const removeItemHandler = () => {
 
 };
 
+const loginInHandler = (token) => {
+   setHaveToken(token)
+   localStorage.setItem("token", token);
+   setLoggedIn(true)
+};
+
    const CartCtx = {
         items: items,
         quantity:0,
         addItem: addItemHandler,
-        removeItem: removeItemHandler
+        removeItem: removeItemHandler,
+        token:haveToken,
+        loggedIn:loggedIn,
+        login:loginInHandler
     };
 
     return <Cartctx.Provider value={CartCtx}>{props.children}</Cartctx.Provider>
