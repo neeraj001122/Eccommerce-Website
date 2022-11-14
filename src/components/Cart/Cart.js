@@ -18,7 +18,7 @@ const Cart = (props) => {
         <div className={classes.cart_header}>
           <span>ITEM</span>
           <span >PRICE</span>
-          <span>QUANTITY</span>
+          <span>TOTAL</span>
         </div>
       <CartItem></CartItem>
       </ul>

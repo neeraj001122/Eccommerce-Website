@@ -32,20 +32,26 @@
 .cart_picture {
    width: 60px;
    border-radius: 15px;
-   position: relative; left: -5rem;
+   position: relative; left: -3rem;
 }
 
 .cart_title{
     font-size: large;
-    position: relative; left: -60px; top: -25px;
+    position: relative; top: -1rem ; left: -30px;
 }
 
 .price{
-    position: relative; left: -9rem;
+    position: relative; left: rem;
 }
 
-.cart_price{
-    position: relative; left: 2rem;
+.quantity{
+    width: 40px;
+    height: 30px;
+    border: 1px solid rgb(176, 209, 216);
+    border-radius: 25px;
+    font-size: small;
+    padding-top: 5px ;
+    position: relative; left: 15px;
 }
 
 .cart_button{
@@ -53,7 +59,33 @@
     border-radius: 5px;
     justify-content: space-between;
     cursor: pointer;
-    padding: 2px;
+    padding: 1px;
     border-width: 1px;
     border-color: black;
+    position: relative; left: 30px; top: -5px;
+}
+
+.total{
+    position: relative; left: 40px;
+}
+
+.div{
+    position: relative; left: 6rem;
+    font-size: x-large;
+}
+
+.div span{
+    padding-left: 1rem ;
+}
+
+.button_cart{
+    padding-top: 2rem;
+}
+
+.buttoncart{
+    padding: 5px;
+    font-family:serif;
+    background-color: rgb(104, 104, 235);
+    border-radius: 5px;
+    cursor: pointer;
 }

@@ -1,59 +1,42 @@
 import classes from './CartItem.module.css'
-
+import Cartctx from '../../Store/creat-context'
+import { useContext } from 'react';
 const CartItem = () => {
-    const cartElements = [
-        {
-          title: "Albume 1",
-      
-          price: 100,
-      
-          imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      
-          quantity: 2,
-        },
-      
-        {
-          title: "Albume 2",
-      
-          price: 50,
-      
-          imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      
-          quantity: 3,
-        },
-      
-        {
-          title: "Albume 3",
-      
-          price: 70,
-      
-          imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      
-          quantity: 1,
-        },
-      ];
-
+  const cartctx = useContext(Cartctx)
+  var totalAmount = 0;
+    cartctx.data.forEach((items) => {
+    totalAmount = totalAmount+(items.obj.price*items.obj.quantity)
+  })
       return <div>
-       {cartElements.map((item) => {
+       {cartctx.data.map((item) => {
         return (
           <div className={classes.cart_header} key={Math.random()}>
             <span>
               {
                 <img
                   className={classes.cart_picture}
-                  src={item.imageUrl}
-                  alt={item.title}
+                  src={item.obj.imageUrl}
+                  alt={item.obj.title}
                 ></img>
               }
-              <span>{item.title}</span>
+              <span className={classes.cart_title}>{item.obj.title}</span>
             </span>
-            <span>{item.price}</span>
+            <span className={classes.price}>{item.obj.price}</span>
+            <span className={classes.quantity}>{'x '+item.obj.quantity} </span>
+            <span className={classes.total}>{item.obj.quantity*item.obj.price}</span>
             <span>
               <button className={classes.cart_button}>Remove</button>
             </span>
           </div>
         );
       })}
+      <div className={classes.div}>
+      <strong>Total Amount</strong>
+      <span>{'$'+totalAmount}</span>
+      </div>
+      <div className={classes.button_cart}>
+        <button className={classes.buttoncart} >PURCHASE</button>
+      </div>
       </div>
 };
 

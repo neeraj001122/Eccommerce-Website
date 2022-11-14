@@ -3,16 +3,16 @@ import Header from './components/Header/Header';
 import ItemList from './components/List/ItemList';
 import Cart from './components/Cart/Cart';
 import CartContextProvider from './Store/CartContextProvider';
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route, Redirect} from 'react-router-dom';
 import AboutPage from './components/Pages/AboutPage';
 import HomePage from './components/Pages/HomePage';
 import ContactUs from './components/Pages/ContactUs';
 import ItemPage from './components/ItemPages.js/ItemPage';
 import LoginPage from './components/Login Page/LoginPage';
-import Cartctx from './Store/creat-context';
+import AuthContext from './Store/AuthenticationContext';
 
 
-function App() {
+function App(props) {
 
   const productsArr = [
     {
@@ -64,10 +64,10 @@ function App() {
     },
   ];
 
-
+  
   const [showCart, setShowCart] = useState(false)
-  const cartctx = useContext(Cartctx)
-  const logged = cartctx.loggedIn
+  const authctx = useContext(AuthContext)
+  const logged = authctx.loggedIn
   const showCartHandler = () => {
      setShowCart(true)
   };
@@ -76,30 +76,34 @@ function App() {
     setShowCart(false)
   };
 
+
   return (
     <div>
     <CartContextProvider>
     <Switch>
-      {!logged && <Route path='/Auth'>
+      <Route path='/Auth'>
         <LoginPage />
-      </Route>}
-    <Route path="/about">
+      </Route>
+     <Route path="/about">
+      {!logged && <Redirect to='/auth' />}
       <AboutPage />
     </Route>
     <Route path="/home">
       <HomePage />
     </Route>
     <Route path='/contactus'>
+    {!logged && <Redirect to='/auth' />}
         <ContactUs />
       </Route>
-      <Route path="/:productId">
+      <Route path="/:productId" >
       {showCart && <Cart onClose={removeCartHandler}></Cart>}
       <ItemPage onOpen={showCartHandler} itemList={productsArr} />
       </Route>
-    <Route path="" >
-      {showCart && <Cart onClose={removeCartHandler}></Cart>}
+    <Route path="" exact>
+      {showCart && <Cart onClose={removeCartHandler}></Cart>} 
+      {!logged && <Redirect to='/auth' />}
       <Header  />
-      <ItemList itemList={productsArr} onOpen={showCartHandler} /> 
+       <ItemList itemList={productsArr} onOpen={showCartHandler} /> 
       </Route>
       </Switch>
     </CartContextProvider>

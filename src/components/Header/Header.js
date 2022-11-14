@@ -1,14 +1,18 @@
 import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Header.module.css";
-import Cartctx from "../../Store/creat-context";
+import AuthContext from "../../Store/AuthenticationContext";
 
 
 const Header = () => {
-const cartctx =  useContext(Cartctx)
-const logged = cartctx.loggedIn
+const authctx =  useContext(AuthContext)
+const logged = authctx.loggedIn
+const logoutHandler = () => {
+  authctx.logout();
+};
+console.log(logged)
   return (
-    <header>
+    <div>
     <ul className={classes.up}>
       {!logged && <li>
         <NavLink  to='/auth'>Login</NavLink>
@@ -25,9 +29,14 @@ const logged = cartctx.loggedIn
       {logged && <li>
         <NavLink to="/contactus">Contact Us</NavLink>
       </li>}
+      { logged &&
+      <li>
+        <button className={classes.button} onClick={logoutHandler}>Logout</button>
+      </li>
+      }
     </ul>
       <h1 className={classes.down}>Neffex Legendry showcase</h1>
-    </header>
+    </div>
   );
 };
 

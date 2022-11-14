@@ -1,3 +1,9 @@
+.div{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .title{
     text-align: center;
     font-style: oblique ;
@@ -22,4 +28,8 @@
 
 .price {
     font-size: larger;
+}
+
+.p{
+    float: left;
 }

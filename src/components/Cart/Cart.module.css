@@ -28,32 +28,3 @@
     flex-wrap: nowrap;
  }
 
-
-.cart_picture {
-   width: 60px;
-   border-radius: 15px;
-   position: relative; left: -5rem;
-}
-
-.cart_title{
-    font-size: large;
-    position: relative; left: -60px; top: -25px;
-}
-
-.price{
-    position: relative; left: -9rem;
-}
-
-.cart_price{
-    position: relative; left: 2rem;
-}
-
-.cart_button{
-    background-color: rgb(236, 65, 65);
-    border-radius: 5px;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 2px;
-    border-width: 1px;
-    border-color: black;
-}

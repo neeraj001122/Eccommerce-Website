@@ -7,7 +7,9 @@ const Cartctx =  React.createContext({
     removeItem: () => {},
     token:"",
     loggedIn:false,
-    login:(token) => {}
+    login:(token) => {},
+    resCart: () => {},
+    data:null
 })
 
 export default Cartctx;

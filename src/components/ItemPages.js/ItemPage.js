@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import ProductReview from "./ProductReview";
 import classes from "./ItemPage.module.css";
 import Cartctx from "../../Store/creat-context";
+import Footer from "../Footer/Footer";
 
 const ItemPage = (props) => {
   const param = useParams();
@@ -21,9 +22,9 @@ const ItemPage = (props) => {
     ctx.addItem(item)
   };
   const output = props.itemList.map((element) => {
-    if (element.key === param.productId) {
+    if (element.key === param.productId) {  
       return (
-        <div key={element.key}>
+        <div className={classes.div} key={element.key}>
           <h1 className={classes.title}>{element.title}</h1>
           <p className={classes.p}>
             Where does it come from? Contrary to popular belief, Lorem Ipsum is
@@ -83,6 +84,7 @@ const ItemPage = (props) => {
       <div>
         <ProductReview />
       </div>
+      <Footer />
     </div>
   );
 };

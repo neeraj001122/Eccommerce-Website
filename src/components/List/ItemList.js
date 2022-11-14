@@ -1,26 +1,27 @@
 import React from "react";
 import classes from './Item.module.css'
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Cartctx from "../../Store/creat-context";
 import { Link } from "react-router-dom";
-
+import Footer from "../Footer/Footer";
 
 const ItemList = (props) => {
   const cartctx = useContext(Cartctx);
+  useEffect(() => {
+    cartctx.resCart();
+  }, [])
   const cartshow = () => {
+    cartctx.resCart();
     props.onOpen();
   };
   let tottal = 0;
-  cartctx.items.forEach((element) => {
-    tottal = tottal + element.quantity;
+  cartctx.data.forEach((element) => {
+    tottal = tottal + element.obj.quantity;
   });
-
   const ctx = useContext(Cartctx)
-  const addItemHandler = (item) => {
+  const addItemHandler = async(item) => {
     ctx.addItem(item)
   };
-
-
   let Items = props.itemList.map((item) => {
     return (
         <div key={item.title} className={classes.box}>
@@ -46,6 +47,7 @@ const ItemList = (props) => {
       </button>
     <h3 className={classes.music}> Music </h3>
     {Items}
+    <Footer />
     </React.Fragment>;
 };
 
